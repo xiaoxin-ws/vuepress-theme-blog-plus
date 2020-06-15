@@ -11,7 +11,7 @@ module.exports = themeConfig => {
     /**
      * Default theme configuration
      */
-    
+
     themeConfig = Object.assign(themeConfig, {
         logo: themeConfig.logoimg,
         nav: themeConfig.nav || [
@@ -49,6 +49,7 @@ module.exports = themeConfig => {
                 id: 'post',
                 dirname: '_posts',
                 path: '/',
+                title: themeConfig.homeTitle ? themeConfig.homeTitle : ''
             },
         ],
         frontmatters: [
@@ -56,16 +57,19 @@ module.exports = themeConfig => {
                 id: 'tag',
                 keys: ['tags'],
                 path: '/tag/',
+                title: themeConfig.tagTitle ? themeConfig.tagTitle : '标签'
             },
             {
                 id: 'categories',
                 keys: ['categories'],
                 path: '/categories/',
+                title: themeConfig.categoriesTitle ? themeConfig.categoriesTitle : '分类'
             },
             {
                 id: 'timeline',
                 keys: ['timeline'],
                 path: '/timeline/',
+                title: themeConfig.timelineTitle ? themeConfig.timelineTitle : '时间轴'
             }
         ],
         globalPagination: {
@@ -119,7 +123,18 @@ module.exports = themeConfig => {
     const plugins = [
         '@vuepress/plugin-nprogress',
         '@vuepress/back-to-top',
-        ['@vuepress/medium-zoom', true],
+        {
+            '@vuepress/medium-zoom': {
+                selector: 'img.zoom-custom-imgs',
+                options: {
+                    margin: 24,
+                    background: '#BADA55',
+                    scrollOffset: 0,
+                    container: '#zoom-container',
+                    template: '#zoom-template',
+                }
+            }
+        },
         [
             '@vuepress/search',
             {
