@@ -14,7 +14,7 @@
         <header class="ui-post-title" itemprop="name headline">
           <NavLink :link="page.path">{{ page.title }}</NavLink>
         </header>
-
+        <hr />
         <p class="ui-post-summary" itemprop="description">
           {{ page.frontmatter.summary || page.summary }}
           <!-- <Content :page-key="page.key" slot-key="intro"/>-->
@@ -28,12 +28,14 @@
             itemtype="http://schema.org/Person"
             itemscope
           >
-            <NavigationIcon />
-            <span itemprop="name">{{ page.frontmatter.author }}</span>
+            <UserIcon />
+            <span itemprop="name">{{ page.frontmatter.author }}&nbsp; in &nbsp; </span>
+
+            <MapIcon />
             <span
               v-if="page.frontmatter.location"
               itemprop="address"
-            >&nbsp; in {{ page.frontmatter.location }}</span>
+            >{{ page.frontmatter.location }}</span>
           </div>
 
           <div v-if="page.frontmatter.date" class="ui-post-meta ui-post-date">
@@ -81,7 +83,9 @@ import {
   NavigationIcon,
   ClockIcon,
   TagIcon,
-  FolderMinusIcon
+  FolderMinusIcon,
+  UserIcon,
+  MapIcon
 } from "vue-feather-icons";
 import {
   Pagination,
@@ -89,7 +93,14 @@ import {
 } from "@vuepress/plugin-blog/lib/client/components";
 
 export default {
-  components: { NavigationIcon, ClockIcon, TagIcon, FolderMinusIcon },
+  components: {
+    NavigationIcon,
+    ClockIcon,
+    TagIcon,
+    FolderMinusIcon,
+    UserIcon,
+    MapIcon
+  },
 
   data() {
     return {
@@ -123,7 +134,7 @@ export default {
 
     resolvePostDate(date) {
       return dayjs(date).format(
-        this.$themeConfig.dateFormat || "ddd MMM DD YYYY"
+        this.$themeConfig.dateFormat || "YYYY-MM-DD hh:mm:ss"
       );
     },
     resolvePostCategories(categories) {
@@ -146,10 +157,19 @@ export default {
 }
 
 .ui-post {
-  padding-bottom: 25px;
-  margin-bottom: 25px;
-  border-bottom: 1px solid $borderColor;
+  overflow: hidden;
+  border-radius: 0.25rem;
+  overflow: hidden;
+  border-radius: 0.25rem;
+  box-sizing: border-box;
+  transition: all 0.3s;
+  box-shadow: 0 1px 6px 0 rgba(0, 0, 0, 0.2);
+  margin: 0 auto 20px;
+  padding: 16px 20px;
 
+  // padding-bottom: 25px;
+  // margin-bottom: 25px;
+  // border-bottom: 1px solid $borderColor;
   &:last-child {
     border-bottom: 0px;
     margin-bottom: 0px;
