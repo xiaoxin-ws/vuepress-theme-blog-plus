@@ -1,16 +1,15 @@
 <template>
   <div class="blog-timeline">
     <h1>时间归档</h1>
-    <div v-for="(isv,iskey,i) in archiveData" :key="i">
-      <h1>{{iskey}}</h1>
-      <div v-for="(item,i1) in isv" :key="i1">
-        <strong>{{i1+1}}.</strong>
-        <span>{{item.frontmatter.date | dateFormat}}</span>
+    <ul v-for="(isv,iskey,i) in archiveData" :key="i">
+      <h2>{{iskey}}</h2>
+      <li v-for="(item,i1) in isv" :key="i1">
+        <span class="ac-post-date">{{item.frontmatter.date | dateFormat}}</span>
         <span>
-          <router-link :to="item.path">{{item.title}}</router-link>
+          <router-link class="ac-post-link" :to="item.path">{{item.title}}</router-link>
         </span>
-      </div>
-    </div>
+      </li>
+    </ul>
   </div>
 </template>
 
@@ -50,8 +49,8 @@ export default {
           .getSeconds()
           .toString()
           .padStart(2, "0");
-
-        return `${y}-${m}-${d} ${hh}:${mm}:${ss}`;
+        return `${m}-${d}`;
+        // return `${y}-${m}-${d} ${hh}:${mm}:${ss}`;
       }
     }
   },
@@ -99,4 +98,55 @@ export default {
 };
 </script>
 
-<style lang="stylus"></style>
+<style lang="stylus" scoped>
+h2 {
+  border-bottom: none;
+}
+
+.blog-timeline ul {
+  border-left: 2px solid #7f7f7f;
+  list-style: none;
+}
+
+.blog-timeline ul li {
+  transition: all 0.25s ease-in-out 0s;
+  transform: translateY(0px);
+  opacity: 1;
+  padding: 30px 0 10px;
+  border-bottom: 1px dashed #eaecef;
+}
+
+.ac-post-date {
+  position: relative;
+  width: 40px;
+  line-height: 30px;
+  color: #7f7f7f;
+  font-size: 14px;
+}
+
+.ac-post-date:before {
+  content: ' ';
+  position: absolute;
+  left: -20px;
+  top: 6px;
+  width: 6px;
+  height: 6px;
+  margin-left: -4px;
+  background: #fff;
+  border-radius: 50%;
+  border: 1px solid #7f7f7f;
+  z-index: 2;
+}
+
+.ac-post-link:hover {
+  color: #2c3e50;
+}
+
+.ac-post-link {
+  transition: all 0.5s;
+  text-decoration: none;
+  color: #7f7f7f;
+  font-size: 16px;
+  line-height: 24px;
+}
+</style>
