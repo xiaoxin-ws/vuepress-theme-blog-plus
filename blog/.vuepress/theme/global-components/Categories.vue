@@ -1,5 +1,5 @@
 <template>
-  <div class="blog-tags">
+  <div class="blog-categories">
     <h1>文章分类汇总</h1>
     <Category v-for="category in categories" :key="categories.name" :category="category" />
   </div>
@@ -12,12 +12,12 @@ export default {
 </script>
 
 <style lang="stylus">
-.blog-tags {
+.blog-categories {
   width: 100%;
 }
 
 @media screen and (max-width: 1000px) {
-  .blog-tags {
+  .blog-categories {
     width: 90%;
   }
 }

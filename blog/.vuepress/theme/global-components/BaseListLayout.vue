@@ -29,7 +29,7 @@
             itemscope
           >
             <UserIcon />
-            <span itemprop="name">{{ page.frontmatter.author }}&nbsp; in &nbsp; </span>
+            <span itemprop="name">{{ page.frontmatter.author }}&nbsp; in &nbsp;</span>
 
             <MapIcon />
             <span
@@ -166,13 +166,15 @@ export default {
   box-shadow: 0 1px 6px 0 rgba(0, 0, 0, 0.2);
   margin: 0 auto 20px;
   padding: 16px 20px;
+  transition: all 0.5s;
 
-  // padding-bottom: 25px;
-  // margin-bottom: 25px;
-  // border-bottom: 1px solid $borderColor;
   &:last-child {
     border-bottom: 0px;
     margin-bottom: 0px;
+  }
+
+  &:hover {
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08), 0 6px 6px rgba(0, 0, 0, 0.1);
   }
 }
 

@@ -32,6 +32,7 @@ export default {
 <style lang="stylus">
 @import '~@app/style/config';
 
+
 .activer {
   width: 50px;
   height: 50px;

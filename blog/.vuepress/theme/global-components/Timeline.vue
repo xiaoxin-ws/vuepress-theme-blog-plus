@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="blog-timeline">
     <h1>时间归档</h1>
     <div v-for="(isv,iskey,i) in archiveData" :key="i">
       <h1>{{iskey}}</h1>
