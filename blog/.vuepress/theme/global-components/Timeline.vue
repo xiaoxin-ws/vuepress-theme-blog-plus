@@ -109,8 +109,7 @@ h2 {
 }
 
 .blog-timeline ul li {
-  transition: all 0.25s ease-in-out 0s;
-  transform: translateY(0px);
+  animation: opacitymainy 1s;
   opacity: 1;
   padding: 30px 0 10px;
   border-bottom: 1px dashed #eaecef;
