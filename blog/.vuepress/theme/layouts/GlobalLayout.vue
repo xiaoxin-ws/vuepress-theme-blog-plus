@@ -9,10 +9,14 @@
       <DefaultGlobalLayout />
     </div>
     <Footer />
+    <div class="music">
+      <Music />
+    </div>
   </div>
 </template>
 
 <script>
+import Music from "@theme/components/Music.vue";
 import GlobalLayout from "@app/components/GlobalLayout.vue";
 import Header from "@theme/components/Header.vue";
 import MobileHeader from "@theme/components/MobileHeader.vue";
@@ -20,6 +24,7 @@ import Footer from "@theme/components/Footer.vue";
 
 export default {
   components: {
+    Music,
     DefaultGlobalLayout: GlobalLayout,
     Header,
     MobileHeader,
@@ -46,9 +51,8 @@ export default {
 }
 
 .content-wrapper {
-  
   padding: 160px 15px 80px 15px;
-  min-height: calc(100vh - 80px - 60px - 160px);
+  min-height: calc(100vh - 20px - 60px - 160px);
   max-width: $contentWidth;
   margin: 0 auto;
 

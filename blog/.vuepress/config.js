@@ -3,16 +3,28 @@ module.exports = {
   description: 'This is a blog example built by VuePress',
   theme: '@vuepress/theme-blog', // OR shortcut: @vuepress/blog
   head: [
-    ['link', { rel: 'icon', href: '/favicon.ico' }]
+    ['link', { rel: 'icon', href: '/favicon.ico' }],
   ],
   themeConfig: {
     //头像在这里配置，在上面配置无法加载，不知啥原因
-    logoimg: "https://img2.woyaogexing.com/2020/06/12/03855dc20d394e0e9c3a65da97c1925a!400x400.jpeg",
+    logoimg: "/logo.jpeg",
     //浏览器主页顶部标签的title 空串显示上面配置的title
     homeTitle: '',
     tagTitle: '标签',
     categoriesTitle: '分类',
     timelineTitle: '时间轴',
+    music: {
+      server: "netease",
+      type: "playlist",
+      id: 2295125861,
+      mutex: true,
+      preload: "auto",
+      order: "random",
+      fixed: true,
+      autoplay: true,
+      loop: "all",
+      volume: 0.7
+    },
     /**
      * Ref: https://vuepress-theme-blog.ulivz.com/#modifyblogpluginoptions
      */

@@ -52,7 +52,10 @@ author: ULIVZ
 location: Shanghai  
 ---
 ```
-
+## 遗留BUG
+```
+音乐播放不会自动放下一首，带解决（能力有限暂时不能解决）
+```
 
 
 For more details, please head VuePress's [documentation](https://v1.vuepress.vuejs.org/).

@@ -122,7 +122,7 @@ module.exports = themeConfig => {
 
     const plugins = [
         '@vuepress/plugin-nprogress',
-        '@vuepress/back-to-top',
+        '@nines/vuepress-plugin-back-to-top',
         {
             '@vuepress/medium-zoom': {
                 selector: 'img.zoom-custom-imgs',
