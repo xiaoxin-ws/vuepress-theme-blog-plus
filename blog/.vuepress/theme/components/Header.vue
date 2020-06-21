@@ -69,7 +69,7 @@ export default {
         if (that.scrollDirection == "down") {
           //页面向下滚动要做的事情
           $("#page-header").removeClass("visible");
-          if (scy > 64) {
+          if (scy > 80) {
             $("#page-header").addClass("fixed");
           }
           //$('#page-header').addClass('fixed')
@@ -77,7 +77,7 @@ export default {
         } else if (that.scrollDirection == "up") {
           //页面向上滚动要做的事情
           //console.log("上");
-          if (scy > 64) {
+          if (scy > 80) {
             $("#page-header").addClass("fixed");
           } else {
             $("#page-header").removeClass("visible");
