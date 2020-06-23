@@ -1,6 +1,7 @@
 <template>
-  <router-link class="blog-tag" :to="tag.path">
+  <router-link class="blog-tag" :style="{ 'backgroundColor': setColor() }" :to="tag.path">
     <TagIcon />
+    &nbsp;
     {{ tag.name }} ({{ tag.pages.length }})
   </router-link>
 </template>
@@ -9,7 +10,27 @@
 import { NavigationIcon, ClockIcon, TagIcon } from "vue-feather-icons";
 export default {
   components: { NavigationIcon, ClockIcon, TagIcon },
-  props: ["tag"]
+  props: ["tag"],
+  methods: {
+    setColor() {
+      const tagColorArr = [
+        "#e15b64",
+        "#f47e60",
+        "#f8b26a",
+        "#abbd81",
+        "#849b87",
+        "#e15b64",
+        "#f47e60",
+        "#f8b26a",
+        "#f26d6d",
+        "#67cc86",
+        "#fb9b5f",
+        "#3498db"
+      ];
+      const index = Math.floor(Math.random() * tagColorArr.length);
+      return tagColorArr[index];
+    }
+  }
 };
 </script>
 
@@ -25,16 +46,16 @@ export default {
   padding: 0 15px;
   border-radius: 5px;
   font-weight: 300;
-  text-align: left;
+  text-align: center;
   box-sizing: border-box;
   transition: background-color 0.3s;
-  color: $darkTextColor;
-  border: 1px solid $darkBorderColor;
+  // border: 1px solid $darkBorderColor;
   text-decoration: none;
+  color: #fff;
   transition: all 0.5s;
 
   &:hover {
-    color: $accentColor !important;
+    // color: $accentColor !important;
     border: 1px solid $accentColor;
     box-shadow: 0 0 5px $accentColor;
   }

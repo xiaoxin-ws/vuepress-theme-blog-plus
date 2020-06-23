@@ -1,8 +1,8 @@
 <template>
-  <div class="blog-categories">
+  <ol class="blog-categories">
     <h1>文章分类汇总</h1>
     <Category v-for="category in categories" :key="categories.name" :category="category" />
-  </div>
+  </ol>
 </template>
 
 <script>
@@ -14,6 +14,7 @@ export default {
 <style lang="stylus">
 .blog-categories {
   width: 100%;
+  list-style: none;
 }
 
 @media screen and (max-width: 1000px) {

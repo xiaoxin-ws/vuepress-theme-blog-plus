@@ -1,8 +1,10 @@
 <template>
-  <router-link class="blog-category" :to="category.path">
-    <FolderMinusIcon />
-    {{ category.name }} ({{ category.pages.length }})
-  </router-link>
+  <li>
+    <router-link class="blog-category" :to="category.path">
+      <FolderMinusIcon />
+      &nbsp;&nbsp;{{ category.name }} ({{ category.pages.length }})
+    </router-link>
+  </li>
 </template>
 
 <script>
@@ -20,28 +22,16 @@ export default {
 
 <style lang="stylus">
 .blog-category {
+  transition: all 0.5s;
+  text-decoration: none;
+  height: 45px;
+  line-height: 45px;
   display: inline-flex;
   align-items: center;
-  height: 45px;
-  word-break: break-word;
-  font-size: 20px;
-  margin-right: 20px;
-  margin-bottom: 20px;
-  padding: 0 15px;
-  border-radius: 5px;
-  font-weight: 300;
-  text-align: left;
-  box-sizing: border-box;
-  transition: background-color 0.3s;
   color: $darkTextColor;
-  border: 1px solid $darkBorderColor;
-  text-decoration: none;
-  transition: all 0.5s;
 
   &:hover {
     color: $accentColor !important;
-    border: 1px solid $accentColor;
-    box-shadow: 0 0 5px $accentColor;
   }
 }
 

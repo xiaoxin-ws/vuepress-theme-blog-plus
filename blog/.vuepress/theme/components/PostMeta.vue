@@ -9,11 +9,13 @@
     >
       <NavigationIcon />
       <span itemprop="name">{{ author }}</span>
-      <span v-if="location" itemprop="address">&nbsp; in {{ location }}</span>
+      &nbsp;
+      <MapIcon />
+      <span v-if="location" itemprop="address">{{ location }}</span>
     </div>
     <div v-if="date" class="post-meta-date">
       <ClockIcon />
-      <time pubdate itemprop="datePublished" :datetime="date">{{ resolvedDate }}</time>
+      <time pubdate itemprop="datePublished" :datetime="date">{{ resolvedDate(date) }}</time>
     </div>
     <ul v-if="categories" class="post-meta-categories">
       <PostCategory v-for="category in resolvedCategories" :key="category" :category="category" />
@@ -21,18 +23,19 @@
     <ul v-if="tags" class="post-meta-tags" itemprop="keywords">
       <PostTag v-for="tag in resolvedTags" :key="tag" :tag="tag" />
     </ul>
+    <hr>
   </div>
 </template>
 
 <script>
 import dayjs from "dayjs";
-import { NavigationIcon, ClockIcon } from "vue-feather-icons";
+import { NavigationIcon, ClockIcon, MapIcon } from "vue-feather-icons";
 import PostTag from "./PostTag.vue";
 import PostCategory from "./PostCategory.vue";
 
 export default {
   name: "PostMeta",
-  components: { NavigationIcon, ClockIcon, PostTag, PostCategory },
+  components: { MapIcon, NavigationIcon, ClockIcon, PostTag, PostCategory },
   props: {
     tags: {
       type: [Array, String]
@@ -50,12 +53,14 @@ export default {
       type: String
     }
   },
-  computed: {
-    resolvedDate() {
-      return dayjs(this.date).format(
-        this.$themeConfig.dateFormat || "ddd MMM DD YYYY"
+  methods: {
+    resolvedDate(dtae) {
+      return dayjs(dtae).format(
+        this.$themeConfig.dateFormat || "YYYY-MM-DD hh:mm:ss"
       );
-    },
+    }
+  },
+  computed: {
     resolvedTags() {
       if (!this.tags || Array.isArray(this.tags)) return this.tags;
       return [this.tags];
